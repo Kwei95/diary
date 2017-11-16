@@ -1,0 +1,30 @@
+<% include ./common/top.ejs %>
+
+<script type="text/javascript">
+	function diaryDelete(diaryId){
+		if(confirm("确认删除这个日志吗？")){
+			window.location="/diary/delete?diaryId="+diaryId;
+		}
+	}
+</script>
+<div class="data_list">
+	<div class="data_list_title">
+		<img src="../img/diary_show_icon.png"/>日志信息
+	</div>
+	<div>
+		<div class="diary_title"><h3><%=diary['title']%></h3></div>
+		<div class="diary_info">
+			发布时间：【<%=diary['releaseDate']%>】 &nbsp;&nbsp;日志类别: <%=diary['typeName']%>
+		</div>
+		<div class="diary_content">
+			<p><%-diary['content']%></p>
+		</div>
+		<div class="diary_action">
+			<button class="btn btn-primary" type="button" onclick="javascript:window.location='/diary/edit?diaryId=<%=diary['diaryId']%>'">修改日志</button>
+			<button class="btn btn-primary" type="button" onclick="javascript:history.back()">返回</button>
+			<button class="btn btn-primary" type="button" onclick="diaryDelete(<%=diary['diaryId']%>)">删除日志</button>
+		</div>
+	</div>
+</div>
+
+<% include ./common/bottom.ejs %>
